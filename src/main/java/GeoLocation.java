@@ -7,6 +7,7 @@
  * the University of Washington.
  */
 
+import java.lang.Math.*;
 public class GeoLocation 
 {
     // Earth radius in miles
@@ -50,15 +51,13 @@ public class GeoLocation
     // other geo location
     public double distanceFrom(GeoLocation other) 
     {
-        double lat1 = Math.toRadians(latitude);
-        double long1 = Math.toRadians(longitude);
-        double lat2 = Math.toRadians(other.latitude);
-        double long2 = Math.toRadians(other.longitude);
+        
         // apply the spherical law of cosines with a triangle composed of the
         // two locations and the north pole
-        double theCos = Math.sin(lat1) * Math.sin(lat2) +
-            Math.cos(lat1) * Math.cos(lat2) * Math.cos(long1 - long2);
-        double arcLength = Math.acos(theCos);
-        return arcLength * RADIUS;
+        double a = this.getLatitude() * Math.PI/180;
+        double b = other.getLatitude() * Math.PI/180;
+        double c = (other.getLongitude() - this.getLongitude()) * Math.PI/180;
+        double d = Math.acos( Math.sin(a) * Math.sin(b) + Math.cos(a) * Math.cos(b) * Math.cos(c)) * (1 - c) RADIUS;
+        return d;
     }
 }
