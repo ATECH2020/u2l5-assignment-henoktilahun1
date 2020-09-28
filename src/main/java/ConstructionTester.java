@@ -23,7 +23,7 @@ public class ConstructionTester
 
         double grandTotal = total + taxRate;
 
-        System.out.println("Grand total: " + grandTotal);
+        System.out.println("Grand total: " + c.grandTotal(total));
 
     }
 }
