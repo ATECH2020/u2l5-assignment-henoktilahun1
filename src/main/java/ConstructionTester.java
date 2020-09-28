@@ -21,5 +21,9 @@ public class ConstructionTester
         total = c.lumberCost(boards) + c.windowCost(windows);
         System.out.println("total: " + total);
 
+        double grandTotal = total + taxRate;
+
+        System.out.println("Grand total: " + grandTotal);
+
     }
 }
